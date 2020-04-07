@@ -1,0 +1,15 @@
+--DECLARE @tab AS TABLE(num_ost varchar(20),cod_cia varchar(5),cod_ano varchar(4),repuestos varchar(500))
+--DECLARE @tabRepuestos AS TABLE(num_ost varchar(20),cod_cia varchar(5),cod_ano varchar(4),repuestos varchar(500))
+
+--insert into @tabRepuestos
+--select t.num_ost,t.cod_cia,t.cod_ano, 
+--          (select stuff([list],1,1,'') as stuff_list
+--         from (select ', ' + cast(repuestos as varchar(255)) as [text()]
+--                  from @tab sub
+--                  where sub.num_ost = t.num_ost and sub.cod_cia = t.cod_cia and sub.cod_ano = t.cod_ano
+--                  for xml path('')
+--                  ) sub_query([list])
+--              ) as pet_list
+--from  @tab t
+--group by num_ost,cod_cia,cod_ano
+--order by num_ost
